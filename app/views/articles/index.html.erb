@@ -1,0 +1,15 @@
+<h2>Notes:</h2>
+<div>
+  <% @entries.each do |entry| %>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Note #<%= entry.id %></h5>
+          <p class="card-text"><%= entry.message %></p>
+          <p class="card-text">Due <%= entry.due %></p>
+          <%= link_to article_path(entry), method: :get do %>
+            <span class="btn btn-primary">View</span>
+          <% end %>
+        </div>
+      </div>
+  <% end %>
+</div>
