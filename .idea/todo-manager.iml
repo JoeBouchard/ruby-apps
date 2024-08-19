@@ -53,7 +53,6 @@
     <orderEntry type="library" scope="PROVIDED" name="concurrent-ruby (v1.3.4, ruby-3.3.4-p94) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="connection_pool (v2.4.1, ruby-3.3.4-p94) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.6, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="dartsass-rails (v0.5.1, ruby-3.3.4-p94) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="dartsass-sprockets (v3.1.0, ruby-3.3.4-p94) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="debug (v1.9.2, ruby-3.3.4-p94) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="drb (v2.2.1, ruby-3.3.4-p94) [gem]" level="application" />
@@ -75,7 +74,7 @@
     <orderEntry type="library" scope="PROVIDED" name="marcel (v1.0.4, ruby-3.3.4-p94) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="matrix (v0.4.2, ruby-3.3.4-p94) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mini_mime (v1.1.5, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="minitest (v5.25.0, ruby-3.3.4-p94) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="minitest (v5.25.1, ruby-3.3.4-p94) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="msgpack (v1.7.2, ruby-3.3.4-p94) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-imap (v0.4.14, ruby-3.3.4-p94) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-pop (v0.1.2, ruby-3.3.4-p94) [gem]" level="application" />
@@ -117,7 +116,7 @@
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v4.2.1, ruby-3.3.4-p94) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets-rails (v3.5.2, ruby-3.3.4-p94) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v2.0.4, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="stimulus-rails (v1.3.3, ruby-3.3.4-p94) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="stimulus-rails (v1.3.4, ruby-3.3.4-p94) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="strscan (v3.1.0, ruby-3.3.4-p94) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thor (v1.3.1, ruby-3.3.4-p94) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tilt (v2.4.0, ruby-3.3.4-p94) [gem]" level="application" />
@@ -160,6 +159,8 @@
         <option value="resource" />
         <option value="scaffold" />
         <option value="scaffold_controller" />
+        <option value="scss:assets" />
+        <option value="scss:scaffold" />
         <option value="stimulus" />
         <option value="system_test" />
         <option value="task" />
@@ -191,6 +192,8 @@
         <option value="resource" />
         <option value="scaffold" />
         <option value="scaffold_controller" />
+        <option value="scss:assets" />
+        <option value="scss:scaffold" />
         <option value="stimulus" />
         <option value="system_test" />
         <option value="task" />
@@ -361,6 +364,11 @@
               <RakeTaskImpl description="Load asset compile environment" fullCommand="assets:environment" id="environment" />
               <RakeTaskImpl description="Compile all the assets named in config.assets.precompile" fullCommand="assets:precompile" id="precompile" />
               <RakeTaskImpl description="" fullCommand="assets:clean" id="clean" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl id="autoprefixer">
+            <subtasks>
+              <RakeTaskImpl description="Show selected browsers and prefixed CSS properties and values" fullCommand="autoprefixer:info" id="info" />
             </subtasks>
           </RakeTaskImpl>
           <RakeTaskImpl id="cache_digests">
