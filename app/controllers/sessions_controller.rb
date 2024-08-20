@@ -4,7 +4,7 @@
     @user = User.from_omniauth(request.env["omniauth.auth"])
     if @user.persisted?
       session[:user_id] = @user.id
-      redirect_to articles_path, notice: "Logged in as #{@user.email}"
+      redirect_to entries_path, notice: "Logged in as #{@user.email}"
     else
       redirect_to root_url, alert: "Failure"
     end

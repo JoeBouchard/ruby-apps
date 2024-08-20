@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "articles#index"
+  root "entries#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get "auth/:provider/callback", to: "sessions#create"
 
@@ -16,5 +16,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :articles
+  resources :entries
 end
