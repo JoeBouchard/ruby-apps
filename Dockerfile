@@ -19,8 +19,8 @@ RUN apt-get update -qq && \
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
     apt install nodejs
 
-# Set production environment
-ENV RAILS_ENV="production" \
+# Set test environment
+ENV RAILS_ENV="test" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development"
@@ -74,4 +74,4 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-CMD ["./bin/rails", "server"]
+CMD ["./bin/rails", "server", "-e", "test"]
