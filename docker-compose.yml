@@ -4,6 +4,8 @@ services:
   keycloak_web:
     image: quay.io/keycloak/keycloak:latest
     container_name: keycloak_web
+    volumes:
+      - ./keycloak:/opt/keycloak/data/import
     environment:
       KC_DB: postgres
       KC_DB_URL: jdbc:postgresql://keycloak_postgres:5432/keycloak
@@ -20,7 +22,7 @@ services:
       KC_HEALTH_ENABLED: true
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
-    command: start-dev
+    command: start-dev --import-realm
     depends_on:
       - keycloak_postgres
     ports:
@@ -40,7 +42,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      RAILS_ENV: development
+      RAILS_ENV: test
 
   smtp_server:
     image: rnwood/smtp4dev:latest
