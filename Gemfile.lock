@@ -87,7 +87,7 @@ GEM
     bootstrap (5.3.3)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 2.11.8, < 3)
-    brakeman (6.1.2)
+    brakeman (6.2.1)
       racc
     builder (3.3.0)
     capybara (3.40.0)
@@ -216,6 +216,8 @@ GEM
     parser (3.3.4.2)
       ast (~> 2.4.1)
       racc
+    pg (1.5.7)
+    pg (1.5.7-x64-mingw-ucrt)
     popper_js (2.11.8)
     psych (5.1.2)
       stringio
@@ -393,6 +395,7 @@ DEPENDENCIES
   omniauth
   omniauth-rails_csrf_protection
   omniauth_openid_connect
+  pg
   puma (>= 5.0)
   rails (~> 7.2.0)
   rubocop-rails-omakase

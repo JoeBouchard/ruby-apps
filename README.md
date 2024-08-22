@@ -15,9 +15,6 @@ Currently, there are two models:
 - `User`: Users who have logged in. Stores the User's email address.
 - `Entry`: Notes created in the Todo Manager. Stores each note's message, due date, and priority.
 
-#### Future Plans:
-1. Configure Active Record to use Postgres database when running in Docker Compose.
-
 ### Controllers
 The controllers handle HTTP requests of various types
 
@@ -58,6 +55,5 @@ A Postgres database is available at `localhost:5432` and is used by Keycloak (pl
 A fake SMTP server is available at `localhost:4040`. This receives all emails sent by the application and displays them.
 
 #### Future plans:
-1. Connect the application to the Postgres database using Active Record
-2. Make the application send emails
-3. Configure SonarQube and SonarScan static code analysis to run on Docker Compose
+1. Make the application send emails
+2. Configure SonarQube and SonarScan static code analysis to run on Docker Compose
