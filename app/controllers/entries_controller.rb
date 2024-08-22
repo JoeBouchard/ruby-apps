@@ -2,8 +2,7 @@ class EntriesController < ApplicationController
   before_action :require_authentication
 
   def index
-    @entries = Entry.all
-    print @current_user
+    @entries = @current_user.entries
   end
 
   def show
@@ -16,6 +15,7 @@ class EntriesController < ApplicationController
 
   def create
     @entry = Entry.new(entry_params)
+    @entry.user = @current_user
 
     if @entry.save
       redirect_to entries_path
