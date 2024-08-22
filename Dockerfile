@@ -13,14 +13,14 @@ WORKDIR /rails
 
 # Install base packages
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libjemalloc2 libsqlite3-0 libvips && \
+    apt-get install --no-install-recommends -y curl libjemalloc2 libsqlite3-0 libvips libpq-dev && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
     apt install nodejs
 
 # Set test environment
-ENV RAILS_ENV="test" \
+ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development"
@@ -50,6 +50,8 @@ RUN chmod +x bin/* && \
     sed -i "s/\r$//g" bin/* && \
     sed -i 's/ruby\.exe$/ruby/' bin/*
 
+RUN bin/rails credentials:edit
+
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
@@ -67,6 +69,9 @@ COPY --from=build /rails /rails
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
     chown -R rails:rails db log storage tmp
+
+RUN chmod 644 /rails/config/master.key
+
 USER 1000:1000
 
 # Entrypoint prepares the database.
@@ -74,4 +79,4 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-CMD ["./bin/rails", "server", "-e", "test"]
+CMD ["./bin/rails", "server"]

@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get "auth/:provider/callback", to: "sessions#create"
 
-  get "login", to: redirect("/auth/openid_connect"), as: "login" if Rails.env == "test"
-  get "login", to: redirect("/auth/developer"), as: "login" unless Rails.env == "test"
+  get "login", to: redirect("/auth/openid_connect"), as: "login" if Rails.env == "production"
+  get "login", to: redirect("/auth/developer"), as: "login" unless Rails.env == "production"
 
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

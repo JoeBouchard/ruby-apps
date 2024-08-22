@@ -8,9 +8,9 @@ services:
       - ./keycloak:/opt/keycloak/data/import
     environment:
       KC_DB: postgres
-      KC_DB_URL: jdbc:postgresql://keycloak_postgres:5432/keycloak
-      KC_DB_USERNAME: keycloak
-      KC_DB_PASSWORD: password
+      KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
+      KC_DB_USERNAME: admin
+      KC_DB_PASSWORD: admin
 
       KC_HOSTNAME: localhost
       KC_HOSTNAME_PORT: 8888
@@ -24,25 +24,28 @@ services:
       KEYCLOAK_ADMIN_PASSWORD: admin
     command: start-dev --import-realm
     depends_on:
-      - keycloak_postgres
+      - postgres
     ports:
       - 8888:8080
 
-  keycloak_postgres:
+  postgres:
     image: postgres:latest
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: keycloak
-      POSTGRES_USER: keycloak
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
 
   web:
     build: .
     ports:
       - "3000:3000"
     environment:
-      RAILS_ENV: test
+      RAILS_ENV: production
+      DATABASE_URL: postgresql://admin:admin@postgres:5432/rails
+    depends_on:
+      - postgres
 
   smtp_server:
     image: rnwood/smtp4dev:latest

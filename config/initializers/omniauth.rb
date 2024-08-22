@@ -1,7 +1,7 @@
 ﻿using OpenIDConnect
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :developer unless Rails.env == "test"
+  provider :developer unless Rails.env == "production"
   provider :openid_connect, {
     name: :openid_connect,
     issuer: "http://host.docker.internal:8888/realms/Joe's-Ruby-Apps",
@@ -20,6 +20,6 @@ Rails.application.config.middleware.use OmniAuth::Builder do
       userinfo_endpoint: "http://host.docker.internal:8888/realms/Joe's-Ruby-Apps/protocol/openid-connect/userinfo",
       jwks_uri: "http://host.docker.internal:8888/realms/Joe's-Ruby-Apps/protocol/openid-connect/certs"
     }
-  } if Rails.env == "test"
+  } if Rails.env == "production"
 end
 OmniAuth.config.allowed_request_methods = [ :post, :get ]
