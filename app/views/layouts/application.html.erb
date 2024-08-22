@@ -38,16 +38,16 @@
             </li>
             <li>
               <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Todo Manager</span> </a>
+                <i class="fs-4 bi-sticky"></i> <span class="ms-1 d-none d-sm-inline">Todo Manager</span> </a>
               <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                <li class="w-100">
+                <li class="w-100 fs-6">
                   <%= link_to entries_path, :class => "nav-link px-0" do %>
-                    <span class="d-none d-sm-inline">View All</span>
+                    <i class="bi-stickies"> </i><span class="d-none d-sm-inline">View All</span>
                   <% end %>
                 </li>
-                <li>
+                <li class="w-100 fs-6">
                   <%= link_to new_entry_path, :class => "nav-link px-0" do %>
-                    <span class="d-none d-sm-inline">Create New</span>
+                    <i class="bi-plus-square"> </i> <span class="d-none d-sm-inline">Create New</span>
                   <% end %>
                 </li>
               </ul>
