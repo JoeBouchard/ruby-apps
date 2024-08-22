@@ -6,7 +6,7 @@
           <h5 class="card-title">Note #<%= entry.id %></h5>
           <p class="card-text"><%= entry.message %></p>
           <p class="card-text">Due <%= entry.due %></p>
-          <%= link_to article_path(entry), method: :get do %>
+          <%= link_to entry_path(entry), method: :get do %>
             <span class="btn btn-primary">View</span>
           <% end %>
         </div>

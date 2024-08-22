@@ -19,4 +19,12 @@ class ApplicationController < ActionController::Base
     # converts current_user to a boolean by negating the negation
     !!current_user
   end
+
+  def new
+    # code here
+  end
+
+  def index
+    # code here
+  end
 end

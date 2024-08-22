@@ -20,6 +20,6 @@ Rails.application.config.middleware.use OmniAuth::Builder do
       userinfo_endpoint: "http://host.docker.internal:8888/realms/Joe's-Ruby-Apps/protocol/openid-connect/userinfo",
       jwks_uri: "http://host.docker.internal:8888/realms/Joe's-Ruby-Apps/protocol/openid-connect/certs"
     }
-  }
+  } if Rails.env == "test"
 end
 OmniAuth.config.allowed_request_methods = [ :post, :get ]
