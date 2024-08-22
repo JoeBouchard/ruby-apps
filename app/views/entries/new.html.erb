@@ -1,0 +1,22 @@
+﻿<h1>New Todo Entry</h1>
+
+<%= form_with model: @entry do |form| %>
+  <div>
+    <%= form.label :message %><br>
+    <%= form.text_area :message %>
+  </div>
+
+  <div>
+    <%= form.label :due %><br>
+    <%= form.date_field :due %>
+  </div>
+
+  <div>
+    <%= form.label :priority, "Priority (1-10)" %><br>
+    <%= form.number_field :priority, max: 10, min: 1 %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
