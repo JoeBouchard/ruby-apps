@@ -21,9 +21,16 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload", media: "all" %>
     <%= javascript_importmap_tags %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <%= turbo_include_tags %>
   </head>
 
-  <body class="container-fluid w-100">
+  <body class="w-100 flex-column">
+    <% if flash[:alert] %>
+      <div class="notice w-100 bg-danger text-bg-danger text-center p-1"><%= flash[:alert] %></div>
+    <% end %>
+    <% if flash[:notice] %>
+      <div class="notice w-100 bg-info text-center p-1"><%= flash[:notice] %></div>
+    <% end %>
     <div class="row w-100">
       <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light" style="max-width: 200px">
         <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">

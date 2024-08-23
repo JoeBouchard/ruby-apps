@@ -13,6 +13,10 @@ class EntriesController < ApplicationController
     @entry = Entry.new
   end
 
+  def edit
+    @entry = Entry.find(params[:id])
+  end
+
   def create
     @entry = Entry.new(entry_params)
     @entry.user = @current_user
@@ -22,6 +26,24 @@ class EntriesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def update
+    @entry = Entry.find(params[:id])
+
+    if @entry.update(entry_params)
+      redirect_to entries_path, flash: { notice: "Updated entry \"#{@entry.message}\"" }
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @entry = Entry.find(params[:id])
+    flash[:notice] = "Deleted entry \"#{@entry.message}\""
+    @entry.destroy
+
+    redirect_to entries_path, status: :see_other
   end
 
   private
