@@ -24,8 +24,7 @@ Currently, there are two controllers along with the base controller
 - `Application`: Base controller. Forces authentication and gets the active user for other controllers to use
 
 #### Future Plans:
-1. Improve `Entries` controller to handle all CRUD operations for the `Entry` model.
-2. Add a `Users` controller to allow a user to manage their account
+1. Add a `Users` controller to allow a user to manage their account
 
 ### Views
 The views display the rendered HTML for a given controller's response.
@@ -33,8 +32,7 @@ The views display the rendered HTML for a given controller's response.
 The HTML is styled and made interactive with the Bootstrap CSS toolkit.
 
 #### Future Plans:
-1. Add views to correspond to improved `Entries` operations
-2. Make it look better
+1. Make it look better
 
 ## Running the code
 This application has two ways it can be run, with slightly different features available in each
